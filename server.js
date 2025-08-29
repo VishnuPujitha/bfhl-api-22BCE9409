@@ -2,12 +2,10 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-// === YOUR DETAILS ===
-const FULL_NAME = "b_vishnu_poojitha";   // lowercase, underscores
-const DOB_DDMMYYYY = "22092003";         // <-- replace with your real DOB in ddmmyyyy
+const FULL_NAME = "b_vishnu_poojitha";
+const DOB_DDMMYYYY = "22092003";
 const EMAIL = "22bce9409@vitstudent.ac.in";
 const ROLL_NUMBER = "22BCE9409";
-// ====================
 
 const isNumeric = (s) => /^[0-9]+$/.test(s);
 const isAlpha = (s) => /^[A-Za-z]+$/.test(s);
@@ -52,7 +50,6 @@ app.post("/bfhl", (req, res) => {
       }
     }
 
-    // Build concat_string (reverse + alternating caps)
     alphaChars.reverse();
     const concat_string = alphaChars
       .map((ch, i) => (i % 2 === 0 ? ch.toUpperCase() : ch.toLowerCase()))
@@ -88,5 +85,7 @@ app.post("/bfhl", (req, res) => {
 });
 
 app.get("/", (_req, res) => res.status(200).send("OK"));
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+
